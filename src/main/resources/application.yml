@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: KakaoMessageMockingApp
+  docker:
+    compose:
+      enabled: false
+
+resilience4j:
+  ratelimiter:
+    configs:
+      default:
+        limitForPeriod: 100            # 1분당 100회 호출 제한
+        limitRefreshPeriod: 1m         # 1분 기준 (60초)
+        timeoutDuration: 0             # 대기하지 않고 즉시 실패
+    instances:
+      kakaoApiLimiter:
+        baseConfig: default            # 기본 설정을 따름
+
+server:
+  port: 8081
