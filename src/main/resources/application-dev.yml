@@ -1,6 +1,9 @@
 spring:
   application:
     name: KakaoMessageMockingApp
+  docker:
+    compose:
+      enabled: false
 
 resilience4j:
   ratelimiter:
